@@ -13,3 +13,8 @@ Arquitecta y desarrolladora.
 # Francisco Javier Avendano
 
 Economista 
+
+
+# Alejandra Bastidas López
+
+Ingeniera Ambiental
