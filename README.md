@@ -9,3 +9,7 @@ Ingeniero Electronico y Desarrollador fullStack
 # Angela Bustos Cifuentes
 
 Arquitecta y desarrolladora.
+
+# Francisco Javier Avendano
+
+Economista
