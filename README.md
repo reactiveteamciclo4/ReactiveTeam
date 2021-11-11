@@ -18,3 +18,8 @@ Economista
 # Alejandra Bastidas López
 
 Ingeniera Ambiental
+
+
+# Shukui Nazari Bedoya Franco
+
+Ingeniera de Sistemas
