@@ -23,3 +23,8 @@ Ingeniera Ambiental
 # Shukui Nazari Bedoya Franco
 
 Ingeniera de Sistemas
+
+
+# Alieth Natalia Montaño Ortiz
+
+Administradora de empresas
