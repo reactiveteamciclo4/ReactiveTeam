@@ -23,6 +23,7 @@ class Server {
   }
   routes() {
     this.app.use('/api/usuarios', require('../router/usuarios'))
+    this.app.use('/api/inscripciones',require('../router/inscripciones'))
    
   }
 

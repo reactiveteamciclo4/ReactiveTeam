@@ -1,0 +1,10 @@
+const {Router} = require('express');
+const { check } = require('express-validator');
+const { getInscripcion} = require('../controllers/inscripciones');
+
+
+const router=Router();
+
+router.get('/',getInscripcion)
+
+  module.exports=router;
