@@ -6,10 +6,8 @@ const router = Router();
 router.get('/', getInscripciones)
 router.post('/', postInscripcion)
 
-
 router.get('/:id', getInscripcion)
 router.put('/:id', putInscripcion)
 router.delete('/:id', deleteInscripcion)
-
 
 module.exports = router;

@@ -25,4 +25,4 @@ const inscripcionSchema = Schema({
       }
     })
 
-    module.exports=model ('Inscripcion', inscripcionSchema)
+module.exports=model ('Inscripcion', inscripcionSchema)

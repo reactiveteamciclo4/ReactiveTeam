@@ -7,7 +7,6 @@ const Inscripcion = require ('../models/inscripciones')
     const {proyecto, estudiante, estado, fechaIngreso, fechaEgreso}=req.query;
     res.json({
       msg: 'Api-get',
-    
       proyecto,
       estudiante,
       estado,
@@ -26,7 +25,6 @@ const getInscripcion= async (req, res) => {
   res.json(inscripcion)
 }
 
-
 const postInscripcion= async (req, res) => {
   const {proyecto, estudiante, estado, fechaIngreso, fechaEgreso}=req.body
 
@@ -44,7 +42,6 @@ const postInscripcion= async (req, res) => {
     })
 }
 
-
 const putInscripcion= (req, res) => {
     
   const {id}= req.params;
@@ -53,7 +50,6 @@ const putInscripcion= (req, res) => {
     id
   })
 }
-
 
 const deleteInscripcion= (req, res) => {
   res.json({
