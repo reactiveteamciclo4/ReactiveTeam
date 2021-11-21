@@ -1,10 +1,9 @@
-const {response} =require('express')
+const {response} = require('express')
 const Inscripcion = require ('../models/inscripciones')
-const Usuario=require('../models/usuario')
-const bcryptjs= require("bcryptjs");
-const { validationResult } = require('express-validator');
+//const Usuario = require('../models/usuario')
+//const Proyecto = require('../models/proyecto')
 
-const getInscripcion=  (req, res) => {
+/*const getInscripciones=  (req, res) => {
     const {proyecto, estudiante, estado, fechaIngreso, fechaEgreso}=req.query;
     res.json({
       msg: 'Api-get',
@@ -15,15 +14,51 @@ const getInscripcion=  (req, res) => {
       fechaIngreso,
       fechaEgreso,
     })
-  }
+  }*/
+
+const getInscripciones= async (req, res) => {
+  const inscripcion = await Inscripcion.find()
+  res.json(inscripcion)
+}
+
+const getInscripcion= async (req, res) => {
+  const inscripcion = await Inscripcion.findById (req.params.id)
+  res.json(inscripcion)
+}
+
 
 const postInscripcion= async (req, res) => {
-    const {proyecto, estudiante, estado, fechaIngreso, fechaEgreso}=req.query;
-    const Inscripcion = new Inscripcion ({proyecto, estudiante, estado, fechaIngreso, fechaEgreso})
+  const {proyecto, estudiante, estado, fechaIngreso, fechaEgreso}=req.body
+
+  const inscripcion = new Inscripcion ({
+    proyecto,
+    estudiante, 
+    estado, 
+    fechaIngreso, 
+    fechaEgreso
+    })
       
-    await Inscripcion.save();
-         res.json({
-           msg: 'api-post',
-           Inscripcion
-         })
-       }
+  await inscripcion.save()
+    res.json({
+      msg: 'Inscripcion guardada'
+    })
+}
+
+
+const putInscripcion= (req, res) => {
+    
+  const {id}= req.params;
+  res.json({
+    msg: 'Inscripcion Actualizada',
+    id
+  })
+}
+
+
+const deleteInscripcion= (req, res) => {
+  res.json({
+    msg: 'Inscripcion Eliminada',
+  })
+}
+
+module.exports={getInscripciones, getInscripcion, postInscripcion, putInscripcion, deleteInscripcion}

@@ -1,5 +1,3 @@
-import { model } from '../usuario.js'; 
-
 const { Schema, model } = require('mongoose')
 
 const inscripcionSchema = Schema({
@@ -7,27 +5,24 @@ const inscripcionSchema = Schema({
         type: String,
         enum: ['ACEPTADO', 'RECHAZADO', 'PENDIENTE'],
         default: 'PENDIENTE',
-        required: true,
+        required: [true, 'El estado es obligatorio']
       },
-      fechaIngreso: {
+    fechaIngreso: {
         type: Date,
-        required: false,
+        required: [false, 'La fecha es opcional'],
       },
-      fechaEgreso: {
+    fechaEgreso: {
         type: Date,
-        required: false,
+        required: [false, 'La fecha es opcional'],
       },
-      proyecto: {
-        type: Schema.Types.ObjectId,
-        ref: ProjectModel,
-        required: true,
+    proyecto: {
+        type: String,
+        required: [true, 'El Proyecto es obligatorio'],
       },
-      estudiante: {
-        type: Schema.Types.ObjectId,
-        ref: UserModel,
-        required: true,
-      },
-    });
-    const InscriptionModel = model('Inscripcion', inscripcionSchema);
+    estudiante: {
+        type: String,
+        required: [true, 'El estudiante es obligatorio']
+      }
+    })
 
-export { InscripcionModel };    
+    module.exports=model ('Inscripcion', inscripcionSchema)
