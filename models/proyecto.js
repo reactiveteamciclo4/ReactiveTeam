@@ -12,7 +12,7 @@ const proyectoSchema = Schema({
         enum: ['GENERAL', 'ESPECIFICO '],
     },
     presupuesto: {
-        type: float,
+        type: String,
         required: [true, 'El presupuesto es obligatorio'],
     },
     fechaInicio: {

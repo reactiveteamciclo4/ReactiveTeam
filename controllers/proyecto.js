@@ -5,9 +5,9 @@ const Usuario = require('../models/proyecto')
 // const { validationResult } = require('express-validator');
 
 const getProyecto = (req, res) => {
-    const { nombre, apellido, edad } = req.query;
+    const { nombre, objetivos, presupuesto, fechaInicio, fechaFin, lider, estado, fase, inscripciones, avances } = req.query;
     res.json({
-        msg: 'Api-get',
+        msg: 'Proyecto:',
 
         nombre,
         apellido,
