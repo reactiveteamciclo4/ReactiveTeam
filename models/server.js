@@ -14,7 +14,7 @@ class Server {
     this.routes()
   }
 
-  async baseDatos(){
+  async baseDatos() {
     await dbConnetion();
   }
   middleware() {
@@ -24,7 +24,8 @@ class Server {
   routes() {
     this.app.use('/api/usuarios', require('../router/usuarios'))
     this.app.use('/api/avances', require('../router/avances'))
-   
+    this.app.use('/api/proyectos', require('../router/proyectos'))
+
   }
 
   listen() {
