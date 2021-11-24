@@ -5,6 +5,7 @@ const proyectoSchema = Schema({
         type: String,
         required: [true, 'El Nombre  es obligatorio'],
     },
+    
     objetivo: {
         type: String,
         default: 'GENERAL',
@@ -34,7 +35,7 @@ const proyectoSchema = Schema({
         type: String,
         default: 'INACTIVO ',
         required: [true, 'Estado es obligatorio'],
-        enum: ['INACTIVO', 'ACTIVO ']
+        enum: ['INACTIVO', 'ACTIVO']
     },
     fase: {
         type: String,

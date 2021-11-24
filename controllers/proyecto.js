@@ -10,16 +10,16 @@ const getProyecto = (req, res) => {
         msg: 'Proyecto:',
 
         nombre,
-        apellido,
+        
     })
 }
 
 const postProyecto = async (req, res) => {
-    const errors = validationResult(req);
+  /*  const errors = validationResult(req);
     if (!errors.isEmpty())// si existe errores entonces {
     {
         return res.status(400).json(errors)
-    }
+    }*/
     const { nombre, objetivos, presupuesto, fechaInicio, fechaFin, lider, estado, fase, inscripciones, avances } = req.body;
     const proyecto = new Proyecto({
         nombre,
@@ -34,21 +34,21 @@ const postProyecto = async (req, res) => {
         avances
     })
 
-    const existeProyecto = Proyecto.findOne({ nombre })
+   /* const existeProyecto = Proyecto.findOne({ nombre })
 
     if (existeProyecto) {
         return res.status(400).json({
             msg: "Proyecto con ese nombre ya existe"
         })
     }
-
+*/
     // const salt = bcryptjs.genSaltSync();
     // usuario.password = bcryptjs.hashSync(password, salt);
 
-    await Proyecto.save();
+    await proyecto.save();
     res.json({
         msg: 'Proyecto creado',
-        Proyecto
+      /*  Proyecto*/
 
     })
 }
