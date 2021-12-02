@@ -28,6 +28,17 @@ const resolversInscripciones = {
         );
         return inscripcionAprobada;
     },
+    rechazarInscripcion: async (parent, args) => {
+      const inscripcionRechazada = await ModeloInscripcion.findByIdAndUpdate(
+          args.id,
+          {
+            estado: 'RECHAZADO',
+            //fechaEgreso: Date.now(),
+          },
+          { new: true }
+        );
+        return inscripcionRechazada;
+    },
   },
 };
 
