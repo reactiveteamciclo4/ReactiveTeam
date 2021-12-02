@@ -1,8 +1,10 @@
-const { Schema, model } = require('mongoose')
+import mongoose from 'mongoose';
 //import { ProjectModel } from '../proyecto/proyecto.js;
 //import { UserModel } from '../usuario/usuario.js';
 
-const inscripcionSchema = Schema<Incripcion>({
+const { Schema, model } = mongoose;
+
+const inscripcionSchema= new mongoose.Schema({
   estado: {
     type: String,
     enum: ['ACEPTADO', 'RECHAZADO', 'PENDIENTE'],
@@ -31,4 +33,6 @@ const inscripcionSchema = Schema<Incripcion>({
   }
 })
 
-module.exports=model ('Inscripcion', inscripcionSchema)
+const ModeloInscripcion = model('Inscripcion', inscripcionSchema);
+
+export { ModeloInscripcion };
