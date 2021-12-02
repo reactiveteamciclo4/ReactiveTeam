@@ -7,7 +7,7 @@ const resolversIncripciones = {
       //const inscripciones = await ModeloInscripcion.find().populate('proyecto').populate('creadoPor');
       return inscripciones;
     },
-  }
+  },
   Mutation: {
     crearInscripcion: async (parents, args) => {
       const inscripcionCreada = await ModeloInscripcion.create({
