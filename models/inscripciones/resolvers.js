@@ -1,9 +1,9 @@
 import { ModeloInscripcion } from './inscripciones.js';
 
-const resolversIncripciones = {
+const resolversInscripciones = {
     Query: {
     Inscripciones: async (parent, args) => {
-      const inscripciones = await InscriptionModel.find();
+      const inscripciones = await ModeloInscripcion.find();
       //const inscripciones = await ModeloInscripcion.find().populate('proyecto').populate('creadoPor');
       return inscripciones;
     },
@@ -31,4 +31,4 @@ const resolversIncripciones = {
   },
 };
 
-export { resolversInscripcion };
+export { resolversInscripciones };
