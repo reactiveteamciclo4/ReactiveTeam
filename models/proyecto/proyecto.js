@@ -1,17 +1,18 @@
 import mongoose from 'mongoose';
-//import { UserModel } from '../usuario/usuario.js';
+//import { ModeloAvance } from '../avance/avance';
+import { ModeloUsuario} from '../usuario/usuario.js';
 const { Schema, model } = mongoose;
 
 const proyectoSchema = new mongoose.Schema({
 
     nombre:{
         type: String,
-        required: true
+        required: [true, 'El Nombre  es obligatorio'],
       },
 
     presupuesto:{
         type: Number,
-        required: true,
+        required: [true, 'El presupuesto es obligatorio'],
       },
 
     fechaInicio: {
@@ -24,44 +25,64 @@ const proyectoSchema = new mongoose.Schema({
         required: true,
       },
 
-    lider:  {
-      type: String,
-       /*type: Schema.Types.ObjectId,
-      ref: UserModel,*/
-      required: true,
+      lider: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: ModeloUsuario,
     },
 
     estado: {
       type: String,
-      enum: ['ACTIVO', 'INACTIVO'],
-      default: 'INACTIVO',
-    },
-
-    fase: {
-      type: String,
-      enum: ['INICIADO', 'DESARROLLO', 'TERMINADO', 'NULO'],
-      default: 'NULO',
-    },
+      default: 'INACTIVO ',
+      enum: ['INACTIVO', 'ACTIVO']
+  },
+  fase: {
+    type: String,
+    default: 'NULO ',
+    enum: ['INICIADO', 'DESARROLLO ', 'TERMINADO', 'NULO']
+},
 
     objetivos: [
       {
         descripcion: {
           type: String,
-          required: true,
+          required: [true, 'Descripcion es obligatorio'],
         },
         
         tipo: {
           type: String,
+          default: 'GENERAL ',
           enum: ['GENERAL', 'ESPECIFICO'],
-          required: true,
+          required: [true, 'Tipo es obligatorio'],
         },
       },
     ],
-     
-})
+  },
+  {
+    toJSON: { virtuals: true }, 
+    toObject: { virtuals: true }, 
+  }
+  );
+
+
+proyectoSchema.virtual('avances', {
+  ref: 'Avance',
+  localField: '_id',
+  foreignField: 'proyecto',
+});
+
+proyectoSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'proyecto',
+});
+
 
 const ModeloProyecto = model('Proyecto', proyectoSchema);
 
 export { ModeloProyecto };
+
+
+
 
 
