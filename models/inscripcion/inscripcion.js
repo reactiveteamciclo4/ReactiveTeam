@@ -1,6 +1,6 @@
 import mongoose from 'mongoose';
-//import { ProjectModel } from '../proyecto/proyecto.js;
-//import { UserModel } from '../usuario/usuario.js';
+import { ModeloProyecto} from '../proyecto/proyecto.js';
+import { ModeloUsuario } from '../usuario/usuario.js';
 
 const { Schema, model } = mongoose;
 
@@ -20,15 +20,13 @@ const inscripcionSchema= new mongoose.Schema({
     required: [false, 'La fecha es opcional'],
   },
   proyecto: {
-    //type: Schema.Types.ObjectId,
-    //ref: ProjectModel,  
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: ModeloProyecto,  
     required: [true, 'El Proyecto es obligatorio'],
   },
   estudiante: {
-    //type: Schema.Types.ObjectId,
-    //ref: UserModel, 
-    type: String,
+    type: Schema.Types.ObjectId,
+    ref: ModeloUsuario, 
     required: [true, 'El estudiante es obligatorio']
   }
 })

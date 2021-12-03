@@ -6,10 +6,9 @@ const tiposInscripcion = gql`
     estado: Enum_EstadoInscripcion!
     fechaIngreso: Date
     fechaEgreso: Date
-    # proyecto: Proyecto!
-    # estudiante: Usuario!
-    proyecto: String!
-    estudiante: String! 
+    proyecto: Proyecto!
+    estudiante: Usuario!
+  
   }
 
   type Query {
