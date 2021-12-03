@@ -1,4 +1,8 @@
 import mongoose from 'mongoose';
+import { ModeloAvance } from '../avance/avance';
+
+
+
 //import { UserModel } from '../usuario/usuario.js';
 const { Schema, model } = mongoose;
 
@@ -6,12 +10,12 @@ const proyectoSchema = new mongoose.Schema({
 
     nombre:{
         type: String,
-        required: true
+        required: [true, 'El Nombre  es obligatorio'],
       },
 
     presupuesto:{
         type: Number,
-        required: true,
+        required: [true, 'El presupuesto es obligatorio'],
       },
 
     fechaInicio: {
@@ -24,41 +28,69 @@ const proyectoSchema = new mongoose.Schema({
         required: true,
       },
 
-    lider:  {
-      type: String,
-       /*type: Schema.Types.ObjectId,
-      ref: UserModel,*/
-      required: true,
+      lider: {
+        type: Schema.Types.ObjectId,
+        required: true,
+        ref: modeloUsuarios,//OJJJOOO PONER EL MODELO DE USER OR USUARIOS COMO LO LLAMEMOS
     },
 
     estado: {
       type: String,
-      enum: ['ACTIVO', 'INACTIVO'],
-      default: 'INACTIVO',
-    },
-
-    fase: {
-      type: String,
-      enum: ['INICIADO', 'DESARROLLO', 'TERMINADO', 'NULO'],
-      default: 'NULO',
-    },
+      default: 'INACTIVO ',
+      required: [true, 'Estado es obligatorio'],
+      enum: ['INACTIVO', 'ACTIVO']
+  },
+  fase: {
+    type: String,
+    default: 'NULO ',
+    required: [true, 'Estado es obligatorio'],
+    enum: ['INICIADO', 'DESARROLLO ', 'TERMINADO', 'NULO']
+},
 
     objetivos: [
       {
         descripcion: {
           type: String,
-          required: true,
+          required: [true, 'Descripcion es obligatorio'],
         },
         
         tipo: {
           type: String,
+          default: 'GENERAL ',
           enum: ['GENERAL', 'ESPECIFICO'],
-          required: true,
+          required: [true, 'Tipo es obligatorio'],
         },
       },
     ],
-     
-})
+
+    inscripciones: {
+      //TRAER INFO DE las incripciones desde la collection inscripcioens
+      type: String
+  },
+
+  avances: {
+      //TRAER INFO DE Los avances desde avances
+      type: String
+
+  },
+
+});
+
+projectoSchema.virtual('avances', {
+  ref: 'Avance',
+  localField: '_id',
+  foreignField: 'proyecto',
+});
+
+projectSchema.virtual('inscripciones', {
+  ref: 'Inscripcion',
+  localField: '_id',
+  foreignField: 'proyecto',
+});
+
+
+
+
 
 const ModeloProyecto = model('Proyecto', proyectoSchema);
 
