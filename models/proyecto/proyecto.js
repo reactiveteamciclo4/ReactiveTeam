@@ -27,29 +27,17 @@ const proyectoSchema = new mongoose.Schema({
       lider: {
         type: Schema.Types.ObjectId,
         required: true,
-<<<<<<< HEAD
-        ref: modeloUsuarios,//OJJJOOO PONER EL MODELO DE USER OR USUARIOS COMO LO LLAMEMOS
-=======
         ref: ModeloUsuario,
->>>>>>> prueba
     },
 
     estado: {
       type: String,
       default: 'INACTIVO ',
-<<<<<<< HEAD
-      required: [true, 'Estado es obligatorio'],
-=======
->>>>>>> prueba
       enum: ['INACTIVO', 'ACTIVO']
   },
   fase: {
     type: String,
     default: 'NULO ',
-<<<<<<< HEAD
-    required: [true, 'Estado es obligatorio'],
-=======
->>>>>>> prueba
     enum: ['INICIADO', 'DESARROLLO ', 'TERMINADO', 'NULO']
 },
 
