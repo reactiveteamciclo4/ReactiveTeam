@@ -1,9 +1,5 @@
 import { gql } from 'apollo-server-express';
 
-/*cuando esten las otras colecciones listas, cambiar el tipo a los atributos:
-proyecto: Proyecto!
-creadoPor: Usuario! */
-
 const tiposProyecto = gql`
 type Objetivo {
   _id: ID!
@@ -45,45 +41,33 @@ type Proyecto {
   inscripciones: [Inscripcion]
 }
 
-  type Query {
-    Proyectos: [Proyecto]
-    filtrarProyecto(idProyecto: String!): [Proyecto]
-  }
+type Query {
+  Proyectos: [Proyecto]
+  filtrarProyecto(idProyecto: String!): [Proyecto]
+}
 
-  type Mutation {
-    crearProyecto(
+type Mutation {
+  crearProyecto(
     nombre: String!
     presupuesto: Float!
     fechaInicio: Date!
-    fechaFin: Date
+    fechaFin: Date!
     estado: Enum_EstadoProyecto!
     fase: Enum_FaseProyecto!
     lider: String!
     objetivos: [crearObjetivo]
-    ): Proyecto
+  ): Proyecto
 
-      // editarProyecto(
-      //   _id: String!
-      //   nombre: String!
-      //   presupuesto: Float!
-      //   fechaInicio: Date!
-      //   fechaFin: Date!
-      //   lider: String!
-      //   ): Proyecto
-  
-      eliminarProyecto(_id: String): Proyecto
+  editarProyecto(_id: String!, campos: camposProyecto!): Proyecto
+  eliminarProyecto(_id: String): Proyecto
 
-    editarProyecto(_id: String!, campos: camposProyecto!): Proyecto
-    crearObjetivo(idProyecto: String!, campos: camposObjetivo!): Proyecto
-    editarObjetivo(idProyecto: String!, indexObjetivo: Int!, campos: camposObjetivo!): Proyecto
-    eliminarObjetivo(idProyecto: String!, idObjetivo: String!): Proyecto
+  crearObjetivo(idProyecto: String!, campos: camposObjetivo!): Proyecto
 
+  editarObjetivo(idProyecto: String!, indexObjetivo: Int!, campos: camposObjetivo!): Proyecto
 
-  }
-
-
-
-  
+  eliminarObjetivo(idProyecto: String!, idObjetivo: String!): Proyecto
+}
+ 
 `;
 
 export { tiposProyecto };

@@ -1,10 +1,11 @@
 import { ModeloProyecto } from './proyecto.js';
+import { ModeloUsuario} from '../usuario/usuario.js'
 
 const resolversProyecto = {
   Proyecto: {
     lider: async (parent, args, context) => {
       console.log(parent.lider);
-      const usr = await UserModel.findOne({
+      const usr = await ModeloUsuario.findOne({
         _id: parent.lider.toString(),
       });
       return usr;

@@ -1,6 +1,6 @@
-import { ModeloInscripcion } from './inscripciones.js';
+import { ModeloInscripcion } from './inscripcion.js';
 
-const resolversInscripciones = {
+const resolversInscripcion = {
     Query: {
     Inscripciones: async (parent, args) => {
       const inscripciones = await ModeloInscripcion.find();
@@ -42,4 +42,4 @@ const resolversInscripciones = {
   },
 };
 
-export { resolversInscripciones };
+export { resolversInscripcion };
