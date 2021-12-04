@@ -60,6 +60,6 @@ usuarioSchema.virtual('inscripciones', {
   foreignField: 'estudiante',
 });
 
-const ModeloUsuario = model('User', usuarioSchema);
+const ModeloUsuario = model('Usuario', usuarioSchema);
 
 export { ModeloUsuario };

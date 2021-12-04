@@ -1,21 +1,28 @@
 import { ModeloUsuario } from './usuario.js';
 import bcrypt from 'bcrypt';
+import { ModeloInscripcion } from '../inscripcion/inscripcion.js';
 
 const resolversUsuario = {
+  Usuario: {
+    inscripciones: async (parent, args, context) => {
+      return ModeloInscripcion.find({ estudiante: parent._id });
+    },
+  },
   Query: {
     Usuarios: async (parent, args, context) => {
-      const usuarios = await ModeloUsuario.find().populate([
-        {
-          path: 'inscripciones',
-          populate: {
-            path: 'proyecto',
-            populate: [{ path: 'lider' }, { path: 'avances' }],
-          },
-        },
-        {
-          path: 'proyectosLiderados',
-        },
-      ]);
+      const usuarios = await ModeloUsuario.find();
+      // .populate([
+      //   {
+      //     path: 'inscripciones',
+      //     populate: {
+      //       path: 'proyecto',
+      //       populate: [{ path: 'lider' }, { path: 'avances' }],
+      //     },
+      //   },
+      //   {
+      //     path: 'proyectosLiderados',
+      //   },
+      // ]);
       return usuarios;
     },
     Usuario: async (parent, args) => {
