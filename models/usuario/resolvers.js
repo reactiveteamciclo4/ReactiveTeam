@@ -29,6 +29,13 @@ const resolversUsuario = {
       const usuario = await ModeloUsuario.findOne({ _id: args._id });
       return usuario;
     },
+
+    filtrarRoles: async (parents, args) => {
+      const rolesFiltrados = await ModeloUsuario.find({rol: args.rol })
+      return rolesFiltrados;
+    },
+
+   
   },
   Mutation: {
     crearUsuario: async (parent, args) => {
@@ -73,6 +80,15 @@ const resolversUsuario = {
         return usuarioEliminado;
       }
     },
+
+    editarEstado: async (parent, args) => {
+      const estadoEditado = await ModeloUsuario.findByIdAndUpdate(args._id, {
+        estado: args.estado
+
+      })
+      return estadoEditado
+
+    }
   },
 };
 
