@@ -7,10 +7,11 @@ const resolversInscripcion = {
       return inscripciones;
     },
     InscripcionesPendientes: async (parent, args) => {
-      const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}).populate('estudiante');
+      const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}, { proyecto: args.idProyecto })
+      .populate('proyecto').populate('estudiante');
       return inscripcionespend;
   },
-    },
+  },
   Mutation: {
     crearInscripcion: async (parents, args) => {
       const inscripcionCreada = await ModeloInscripcion.create({
