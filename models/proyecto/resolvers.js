@@ -1,5 +1,6 @@
 import { ModeloUsuario } from '../usuario/usuario.js';
 import { ModeloProyecto } from './proyecto.js';
+import { ModeloAvance } from '../avance/avance.js';
 
 const resolversProyecto = {
   Proyecto: {
@@ -12,7 +13,7 @@ const resolversProyecto = {
   },
   Query: {
     Proyectos: async (parent, args, context) => {
-      const proyectos = await ModeloProyecto.find().populate('avances').populate('inscripciones');
+      const proyectos = await ModeloProyecto.find().populate('avances').populate('inscripciones').populate('creadoPor');
       return proyectos;
     },
   },
