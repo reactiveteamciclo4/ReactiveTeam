@@ -40,6 +40,7 @@ const resolversProyecto = {
           presupuesto: args.presupuesto,
           objetivos: args.objetivos,
           estado: args.estado,
+          fase: args.fase,
         },
         { new: true }
       );

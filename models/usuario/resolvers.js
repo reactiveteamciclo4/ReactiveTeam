@@ -21,10 +21,10 @@ const resolversUsuario = {
         },
         {
           path: 'proyectosLiderados',
-          populate: {
-            path:'proyecto',
-            populate: [{path: 'lider'}, {path: 'usuario'}],
-          },
+          // populate: {
+          //   path:'proyecto',
+          //   populate: [{path: 'lider'}, {path: 'usuario'}],
+          // },
         },
       ]);
     return usuarios;
