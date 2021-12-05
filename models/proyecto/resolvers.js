@@ -13,7 +13,9 @@ const resolversProyecto = {
   },
   Query: {
     Proyectos: async (parent, args, context) => {
-      const proyectos = await ModeloProyecto.find().populate('avances').populate('inscripciones').populate('creadoPor');
+      const proyectos = await ModeloProyecto.find().populate('avances').populate('inscripciones');
+
+      
       return proyectos;
     },
   },
@@ -32,7 +34,13 @@ const resolversProyecto = {
     editarProyecto: async (parent, args) => {
       const proyectoEditado = await ModeloProyecto.findByIdAndUpdate(
         args._id,
-        { ...args.campos },
+        //{ ...args.campos },
+        {
+          nombre: args.nombre,
+          presupuesto: args.presupuesto,
+          objetivos: args.objetivos,
+          estado: args.estado,
+        },
         { new: true }
       );
 

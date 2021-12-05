@@ -1,6 +1,5 @@
 import mongoose from 'mongoose';
 import { ModeloUsuario } from '../usuario/usuario.js';
-import { ModeloAvance } from '../avance/avance.js';
 
 const { Schema, model } = mongoose;
 

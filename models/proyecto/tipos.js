@@ -55,7 +55,13 @@ const tiposProyecto = gql`
       objetivos: [crearObjetivo]
     ): Proyecto
 
-    editarProyecto(_id: String!, campos: camposProyecto!): Proyecto
+    editarProyecto(_id: String!,
+      nombre: String!
+      presupuesto: Float!
+      estado: Enum_EstadoProyecto!
+      objetivos: [crearObjetivo]): Proyecto
+
+    
 
     crearObjetivo(idProyecto: String!, campos: camposObjetivo!): Proyecto
 
@@ -66,3 +72,5 @@ const tiposProyecto = gql`
 `;
 
 export { tiposProyecto };
+
+// campos: camposProyecto!
