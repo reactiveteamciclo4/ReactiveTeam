@@ -3,11 +3,14 @@ import { ModeloInscripcion } from './inscripcion.js';
 const resolversInscripcion = {
     Query: {
     Inscripciones: async (parent, args) => {
-      const inscripciones = await ModeloInscripcion.find();
-      //const inscripciones = await ModeloInscripcion.find().populate('proyecto').populate('creadoPor');
+      const inscripciones = await ModeloInscripcion.find().populate('proyecto').populate('estudiante');
       return inscripciones;
     },
+    InscripcionesPendientes: async (parent, args) => {
+      const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}).populate('estudiante');
+      return inscripcionespend;
   },
+    },
   Mutation: {
     crearInscripcion: async (parents, args) => {
       const inscripcionCreada = await ModeloInscripcion.create({
