@@ -47,6 +47,8 @@ const tiposUsuario = gql`
       _id: String!
       estado: Enum_EstadoUsuario!
     ): Usuario
+
+    
   }
 `;
 
