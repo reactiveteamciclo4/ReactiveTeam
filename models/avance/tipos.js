@@ -34,7 +34,9 @@ const tiposAvance = gql`
   
       eliminarAvance(_id: String): Avance
 
-
+      agregarObservacionesAvance(  
+        observaciones: String!
+        ): Avance
   }
 `;
 

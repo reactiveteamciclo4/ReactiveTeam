@@ -34,9 +34,17 @@ const resolversAvance = {
       return avanceEditado;
     },
     eliminarAvance: async (parent, args) => {
-        const avanceEliminado = await ModeloAvance.findOneAndDelete({ _id: args._id });
-        return avanceEliminado;
-      }
+      const avanceEliminado = await ModeloAvance.findOneAndDelete({ _id: args._id });
+      return avanceEliminado;
+    },
+    
+      agregarObservacionesAvance: async (parent, args) => {
+      const avanceConObservaciones = await ModeloAvance.findOneAndUpdate(args._id, {
+        observaciones: args.observaciones
+      })
+      return agregarObservacionesAvance;
+    }
+
   },
 };
 
