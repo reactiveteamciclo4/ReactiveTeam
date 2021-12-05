@@ -32,12 +32,12 @@ const proyectoSchema = new mongoose.Schema({
 
   estado: {
     type: String,
-    default: 'INACTIVO ',
+    default: 'INACTIVO',
     enum: ['INACTIVO', 'ACTIVO']
   },
   fase: {
     type: String,
-    default: 'NULO ',
+    default: 'NULO',
     enum: ['INICIADO', 'DESARROLLO ', 'TERMINADO', 'NULO']
   },
 
