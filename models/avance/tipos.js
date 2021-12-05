@@ -25,7 +25,7 @@ const tiposAvance = gql`
 
 
       editarAvance(
-        _id: String!
+        _id: String!,
         fecha: Date!, 
         descripcion: String!, 
         proyecto: String!, 
@@ -34,8 +34,9 @@ const tiposAvance = gql`
   
       eliminarAvance(_id: String): Avance
 
-      agregarObservacionesAvance(  
-        observaciones: String!
+      crearObservacionesAvance(  
+        _id: String!,
+        observaciones: [String]!
         ): Avance
   }
 `;

@@ -38,12 +38,14 @@ const resolversAvance = {
       return avanceEliminado;
     },
     
-      agregarObservacionesAvance: async (parent, args) => {
-      const avanceConObservaciones = await ModeloAvance.findByIdAndUpdate(args._id, {
+
+    crearObservacionesAvance: async (parent, args) => {
+      const observacionCreada = await ModeloAvance.findByIdAndUpdate(args._id, {
         observaciones: args.observaciones
       })
-      return agregarObservacionesAvance;
+      return observacionCreada
     }
+  
 
   },
 };
