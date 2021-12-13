@@ -10,7 +10,7 @@ const usuarioSchema = new Schema({
       validator: (email) => {
         return /^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/.test(email);
       },
-      message: 'El formato del correo electrónico está malo.',
+      message: 'El formato del correo electrónico está herrado.',
     },
   },
   password: {
