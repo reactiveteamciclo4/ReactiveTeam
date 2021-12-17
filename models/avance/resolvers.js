@@ -31,9 +31,7 @@ const resolversAvance = {
     },
     editarAvance: async (parent, args) => {
       const avanceEditado = await ModeloAvance.findByIdAndUpdate(args._id, {
-        fecha: args.fecha,
         descripcion: args.descripcion,
-        observaciones: args.observaciones
       });
 
       return avanceEditado;
