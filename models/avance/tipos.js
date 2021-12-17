@@ -29,7 +29,7 @@ const tiposAvance = gql`
         _id: String!,
         fecha: Date!, 
         descripcion: String!, 
-        creadoPor: String!
+        observaciones: String!
         ): Avance
   
       eliminarAvance(_id: String): Avance
