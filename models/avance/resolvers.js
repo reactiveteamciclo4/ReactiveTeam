@@ -6,6 +6,12 @@ const resolversAvance = {
       const avances = await ModeloAvance.find().populate('proyecto').populate('creadoPor');
       return avances;
     },
+    Avance: async (parent, args) => {
+      const avance = await ModeloAvance.findOne({ _id: args._id });
+      return avance;
+    },
+
+  
     filtrarAvance: async (parents, args) => {
       const avanceFiltrado = await ModeloAvance.find({ proyecto: args.idProyecto })
         .populate('proyecto')
