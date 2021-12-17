@@ -4,13 +4,23 @@ const resolversInscripcion = {
     Query: {
     Inscripciones: async (parent, args) => {
       const inscripciones = await ModeloInscripcion.find().populate('proyecto').populate('estudiante');
-      return inscripciones;
+      return inscripciones;      
     },
     InscripcionesPendientes: async (parent, args) => {
       const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}, { proyecto: args.idProyecto })
       .populate('proyecto').populate('estudiante');
       return inscripcionespend;
-  },
+    },
+    InscripcionesEst: async (parent, args) => {
+      const inscripcionesest = await ModeloInscripcion.find({ estado: args.estado })
+      .populate('proyecto').populate('estudiante');
+      return inscripcionesest;
+    },
+    InscripcionesAceptadas: async (parent, args) => {
+      const inscripcionesacep = await ModeloInscripcion.find( { estado:'ACEPTADO'}, { proyecto: args.idProyecto })
+      .populate('proyecto').populate('estudiante');
+      return inscripcionesacep; 
+    },
   },
   Mutation: {
     crearInscripcion: async (parents, args) => {
@@ -21,6 +31,7 @@ const resolversInscripcion = {
       });
       return inscripcionCreada;
     },
+
     aprobarInscripcion: async (parent, args) => {
       const inscripcionAprobada = await ModeloInscripcion.findByIdAndUpdate(
           args.id,
@@ -37,7 +48,6 @@ const resolversInscripcion = {
           args.id,
           {
             estado: 'RECHAZADO',
-            //fechaEgreso: Date.now(),
           },
           { new: true }
         );
