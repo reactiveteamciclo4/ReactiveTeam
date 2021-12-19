@@ -8,10 +8,13 @@ const tiposInscripcion = gql`
     fechaEgreso: Date
     proyecto: Proyecto!
     estudiante: Usuario!
+    liderProyecto: [Proyecto]
   }
 
   type Query {
+    filtrarInscrip(idProyecto: String!):[Inscripcion]
     Inscripciones: [Inscripcion]
+    InscripcionesLider: [Inscripcion]
     InscripcionesPendientes: [Inscripcion]
     InscripcionesEst (estado: Enum_EstadoInscripcion!): [Inscripcion]
     InscripcionesAceptadas: [Inscripcion]
