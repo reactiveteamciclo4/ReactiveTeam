@@ -4,7 +4,7 @@ import { ModeloUsuario } from '../usuario/usuario.js';
 
 const { Schema, model } = mongoose;
 
-const inscripcionSchema= new Schema({
+const inscripcionSchema= new mongoose.Schema({
   estado: {
     type: String,
     enum: ['ACEPTADO', 'RECHAZADO', 'PENDIENTE'],

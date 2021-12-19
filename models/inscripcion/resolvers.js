@@ -2,23 +2,24 @@ import { ModeloInscripcion } from './inscripcion.js';
 
 const resolversInscripcion = {
   Query: {
-
-    filtrarInscrip: async (parents, args) => {
-      const inFiltrada = await ModeloInscripcion.find({ proyecto: args.idProyecto })
-        .populate('proyecto')
-        .populate('estudiante');
-      return inFiltrada;
-    }, 
-
-
-
-
     Inscripciones: async (parent, args) => {
-      const inscripciones = await ModeloInscripcion.find().populate('proyecto').populate('estudiante');
+      const inscripciones = await ModeloInscripcion.find()
+      .populate('proyecto').populate('estudiante');
       return inscripciones;      
     },
-
-   /* InscripcionesLider: async (parent, args) => {
+    Incripcion: async (parent, args) => {
+      const inscripcion = await ModeloInscripcion.findOne ({_id: args._id})
+      .populate('proyecto').populate('estudiante');
+      return inscripcion;
+    },
+    filtrarInscrip: async (parents, args) => {
+      const inFiltrada = await ModeloInscripcion.find({ proyecto: args.idProyecto })
+        .populate('proyecto').populate('estudiante');
+      return inFiltrada;
+    },  
+   
+    //prueba
+   InscripcionesLider: async (parent, args) => {
       const inscripcionesLider = await ModeloInscripcion.find()
       .populate('estudiante')
       .populate([{ path: 'proyecto',
@@ -29,8 +30,8 @@ const resolversInscripcion = {
         }],
       );
     return inscripcionesLider;
-    },*/
-
+    },
+    
     InscripcionesPendientes: async (parent, args) => {
       const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}, { proyecto: args.idProyecto })
       .populate('proyecto').populate('estudiante');
@@ -57,23 +58,20 @@ const resolversInscripcion = {
       });
       return inscripcionCreada;
     },
-
-  /*  aprobarInscripcion: async (parent, args) => {
+    aprobarInscripcion: async (parent, args) => {
       const inscripcionAprobada = await ModeloInscripcion.findByIdAndUpdate(
           args.id,
-          {
-            estado: 'ACEPTADO',
+          { estado: 'ACEPTADO',
             fechaIngreso: Date.now(),
           },
           { new: true }
         );
         return inscripcionAprobada;
-    },*/
+    },
     rechazarInscripcion: async (parent, args) => {
       const inscripcionRechazada = await ModeloInscripcion.findByIdAndUpdate(
           args.id,
-          {
-            estado: 'RECHAZADO',
+          {estado: 'RECHAZADO',
           },
           { new: true }
         );

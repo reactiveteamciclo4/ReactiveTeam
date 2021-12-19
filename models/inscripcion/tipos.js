@@ -11,9 +11,10 @@ const tiposInscripcion = gql`
     liderProyecto: [Proyecto]
   }
 
-  type Query {
-    filtrarInscrip(idProyecto: String!):[Inscripcion]
+  type Query {    
     Inscripciones: [Inscripcion]
+    Inscripcion(_id: String!): Inscripcion
+    filtrarInscrip(idProyecto: String!):[Inscripcion]
     InscripcionesLider: [Inscripcion]
     InscripcionesPendientes: [Inscripcion]
     InscripcionesEst (estado: Enum_EstadoInscripcion!): [Inscripcion]
