@@ -7,7 +7,7 @@ const resolversInscripcion = {
       .populate('proyecto').populate('estudiante');
       return inscripciones;      
     },
-    Incripcion: async (parent, args) => {
+    Inscripcion: async (parent, args) => {
       const inscripcion = await ModeloInscripcion.findOne ({_id: args._id})
       .populate('proyecto').populate('estudiante');
       return inscripcion;
@@ -16,10 +16,8 @@ const resolversInscripcion = {
       const inFiltrada = await ModeloInscripcion.find({ proyecto: args.idProyecto })
         .populate('proyecto').populate('estudiante');
       return inFiltrada;
-    },  
-   
-    //prueba
-   InscripcionesLider: async (parent, args) => {
+    },    
+    /* InscripcionesLider: async (parent, args) => {
       const inscripcionesLider = await ModeloInscripcion.find()
       .populate('estudiante')
       .populate([{ path: 'proyecto',
@@ -30,8 +28,7 @@ const resolversInscripcion = {
         }],
       );
     return inscripcionesLider;
-    },
-    
+    },*/    
     InscripcionesPendientes: async (parent, args) => {
       const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}, { proyecto: args.idProyecto })
       .populate('proyecto').populate('estudiante');
@@ -41,11 +38,6 @@ const resolversInscripcion = {
       const inscripcionesest = await ModeloInscripcion.find({ estado: args.estado })
       .populate('proyecto').populate('estudiante');
       return inscripcionesest;
-    },
-    InscripcionesAceptadas: async (parent, args) => {
-      const inscripcionesacep = await ModeloInscripcion.find( { estado:'ACEPTADO'}, { proyecto: args.idProyecto })
-      .populate('proyecto').populate('estudiante');
-      return inscripcionesacep; 
     },
   },
 
