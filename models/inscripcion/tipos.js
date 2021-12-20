@@ -14,7 +14,6 @@ const tiposInscripcion = gql`
     Inscripciones: [Inscripcion]
     Inscripcion(_id: String!): Inscripcion
     filtrarInscrip(idProyecto: String!):[Inscripcion]
-    InscripcionesLider: [Inscripcion]
     InscripcionesPendientes: [Inscripcion]
     InscripcionesEst (estado: Enum_EstadoInscripcion!): [Inscripcion]
   }

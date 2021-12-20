@@ -17,18 +17,6 @@ const resolversInscripcion = {
         .populate('proyecto').populate('estudiante');
       return inFiltrada;
     },    
-    /* InscripcionesLider: async (parent, args) => {
-      const inscripcionesLider = await ModeloInscripcion.find()
-      .populate('estudiante')
-      .populate([{ path: 'proyecto',
-        populate: [{ path: 'lider' }],
-        },
-      ],[{ 
-        path: 'liderProyecto',
-        }],
-      );
-    return inscripcionesLider;
-    },*/    
     InscripcionesPendientes: async (parent, args) => {
       const inscripcionespend = await ModeloInscripcion.find({ estado:'PENDIENTE'}, { proyecto: args.idProyecto })
       .populate('proyecto').populate('estudiante');
