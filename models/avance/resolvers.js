@@ -58,7 +58,7 @@ const resolversAvance = {
 
 
 
-    crearObservacionesAvance: async (parent, args) => {
+    crearObservacion: async (parent, args) => {
       const observacionCreada = await ModeloAvance.findByIdAndUpdate(args._id, {
         observaciones: args.observaciones
       },
