@@ -32,20 +32,23 @@ const resolversAvance = {
     editarAvance: async (parent, args) => {
       const avanceEditado = await ModeloAvance.findByIdAndUpdate(args._id, {
         descripcion: args.descripcion,
-      });
+      }, { new: true });
 
       return avanceEditado;
     },
     eliminarAvance: async (parent, args) => {
-      const avanceEliminado = await ModeloAvance.findOneAndDelete({ _id: args._id });
+      const avanceEliminado = await ModeloAvance.findOneAndDelete({ _id: args._id }, 
+        { new: true });
       return avanceEliminado;
     },
+
     
 
     crearObservacionesAvance: async (parent, args) => {
       const observacionCreada = await ModeloAvance.findByIdAndUpdate(args._id, {
         observaciones: args.observaciones
-      })
+      },
+      { new: true })
       return observacionCreada
     }
   
