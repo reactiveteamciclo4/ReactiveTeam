@@ -1,6 +1,7 @@
 import { ModeloUsuario } from '../usuario/usuario.js';
 import { ModeloProyecto } from './proyecto.js';
 import { ModeloAvance } from '../avance/avance.js';
+import { ModeloInscripcion } from '../inscripcion/inscripcion.js';
 
 const resolversProyecto = {
   Proyecto: {
@@ -44,6 +45,15 @@ const resolversProyecto = {
         },
         { new: true }
       );
+    /*  if (args.estado === 'INACTIVO') {
+        ModeloInscripcion.updateMany (
+          {estado: 'ACEPTADO'},
+          {$set: {
+            //estado: 'RECHAZADO',
+            fechaEgreso: Date.now(),
+          }},
+        )
+      };   */
 
       return proyectoEditado;
     },
