@@ -67,7 +67,14 @@ editarUsuario: async (parent, args) => {
       return usuarioEliminado;
     }
   },
-
+  editarPerfil: async (parent, args) => {
+    const usuarioEditado = await ModeloUsuario.findOneAndUpdate(
+      args._id,
+      { ...args.campos },
+      { new: true }
+    );
+    return usuarioEditado;
+  },
     editarEstado: async (parent, args) => {
       const estadoEditado = await ModeloUsuario.findByIdAndUpdate(args._id, {
         estado: args.estado}, 
