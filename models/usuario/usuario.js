@@ -40,7 +40,7 @@ const usuarioSchema = new Schema({
     enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],
     default: 'PENDIENTE',
   },
-},
+}
 
 // {
 //   toJSON: { virtuals: true },

@@ -10,48 +10,31 @@ const resolversUsuario = {
   },
   Query: {
     Usuarios: async (parent, args, context) => {
-      const usuarios = await ModeloUsuario.find()
-      .populate([
-        {
-          path: 'inscripciones',
-          populate: {
-            path: 'proyecto',
-            populate: [{ path: 'lider' }, { path: 'avances' }],
-          },
-        },
-        {
-          path: 'proyectosLiderados',
-          // populate: {
-          //   path:'proyecto',
-          //   populate: [{path: 'lider'}, {path: 'usuario'}],
-          // },
-        },
-      ]);
-    return usuarios;
-  },
-  Usuario: async (parent, args) => {
-    const usuario = await ModeloUsuario.findOne({ _id: args._id });
-    return usuario;
+      if (context.userData.rol === 'ADMINISTRADOR') {
+        const usuarios = await ModeloUsuario.find();
+        return usuarios;
+      }
+      return null;
+/*      const usuarios = await ModeloUsuario.find({ ...args.filtro });
+      return usuarios;*/
+    },
+    Usuario: async (parent, args) => {
+      const usuario = await ModeloUsuario.findOne({ _id: args._id });
+      return usuario;
+    },
   },
 
-  filtrarRoles: async (parents, args) => {
-    const rolesFiltrados = await ModeloUsuario.find({ rol: args.rol })
-    return rolesFiltrados;
-  },
-
-
-},
   Mutation: {
     crearUsuario: async (parent, args) => {
       const salt = await bcrypt.genSalt(10);
-const hashedPassword = await bcrypt.hash(args.password, salt);
-const usuarioCreado = await ModeloUsuario.create({
-  nombre: args.nombre,
-  apellido: args.apellido,
-  identificacion: args.identificacion,
-  correo: args.correo,
-  rol: args.rol,
-  password: hashedPassword,
+      const hashedPassword = await bcrypt.hash(args.password, salt);
+      const usuarioCreado = await ModeloUsuario.create({
+      nombre: args.nombre,
+      apellido: args.apellido,
+      identificacion: args.identificacion,
+      correo: args.correo,
+      rol: args.rol,
+      password: hashedPassword,
 });
 
 if (Object.keys(args).includes('estado')) {
@@ -87,10 +70,9 @@ editarUsuario: async (parent, args) => {
 
     editarEstado: async (parent, args) => {
       const estadoEditado = await ModeloUsuario.findByIdAndUpdate(args._id, {
-        estado: args.estado
-
-      })
-      return estadoEditado
+        estado: args.estado}, 
+        { new: true });
+      return estadoEditado;
 
     }
   },

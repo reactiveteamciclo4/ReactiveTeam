@@ -48,7 +48,7 @@ const resolversAutenticacion = {
       console.log('contexto', context);
       if (!context.userData) {
         return {
-          error: 'token no valido',
+          error: 'TOKEN INVÁLIDO',
         };
       } else {
         return {
