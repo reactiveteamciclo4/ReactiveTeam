@@ -38,6 +38,20 @@ const resolversInscripcion = {
       });
       return inscripcionCreada;
     },
+  /*  cambiarEstado: async (parents, args) => {
+      const cambiarEstado = await ModeloInscripcion.findByIdAndUpdate( args.id,
+        estado: args.estado,
+        if (args.estado= "ACEPTAR") {
+          estado: 'ACEPTADO',
+          fechaIngreso: Date.now(),
+      }, else {
+        {estado: 'RECHAZADO',
+          }},
+          { new: true }
+      );
+      return cambiaEstado;  
+    }, */
+
     aprobarInscripcion: async (parent, args) => {
       const inscripcionAprobada = await ModeloInscripcion.findByIdAndUpdate(
           args.id,
