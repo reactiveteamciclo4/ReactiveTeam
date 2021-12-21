@@ -33,7 +33,7 @@ type Query {
 
       crearObservacion(  
         _id: String!,
-        observaciones: String!
+        observacion: String!
         ): Avance
   }
 `;
