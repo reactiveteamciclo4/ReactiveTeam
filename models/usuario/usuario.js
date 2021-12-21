@@ -35,6 +35,10 @@ const usuarioSchema = new Schema({
     required: true,
     enum: ['ESTUDIANTE', 'LIDER', 'ADMINISTRADOR'],
   },
+  foto: {
+    type: String,
+    required: false,
+  },
   estado: {
     type: String,
     enum: ['PENDIENTE', 'AUTORIZADO', 'NO_AUTORIZADO'],

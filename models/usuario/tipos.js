@@ -8,6 +8,7 @@ const tiposUsuario = gql`
     identificacion: String!
     correo: String!
     rol: Enum_Rol!
+    foto: String
     estado: Enum_EstadoUsuario
     inscripciones: [Inscripcion]
     avancesCreados: [Avance]
@@ -19,6 +20,13 @@ const tiposUsuario = gql`
     correo: String
     rol: Enum_Rol
     estado: Enum_EstadoUsuario
+  }
+
+  input CamposEditarPerfil {
+    nombre: String
+    apellido: String
+    identificacion: String
+    foto: String
   }
   type Query {
     Usuarios(filtro: FiltroUsuarios): [Usuario]
@@ -48,6 +56,8 @@ const tiposUsuario = gql`
 
     eliminarUsuario(_id: String, correo: String): Usuario
 
+    editarPerfil(_id: String!, campos: CamposEditarPerfil!): Usuario
+    
     editarEstado( 
       _id: String!
       estado: Enum_EstadoUsuario!
