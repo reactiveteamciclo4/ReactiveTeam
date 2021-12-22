@@ -31,9 +31,9 @@ type Query {
   
       eliminarAvance(_id: String): Avance
 
-      crearObservacionesAvance(  
+      crearObservacion(  
         _id: String!,
-        observaciones: [String]!
+        observacion: String!
         ): Avance
   }
 `;
