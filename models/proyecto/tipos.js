@@ -56,9 +56,9 @@ const tiposProyecto = gql`
     ): Proyecto
 
     editarProyecto(_id: String!,
-      nombre: String!
-      presupuesto: Float!
-      estado: Enum_EstadoProyecto!
+      nombre: String
+      presupuesto: Float
+      estado: Enum_EstadoProyecto
       fase: Enum_FaseProyecto
       objetivos: [crearObjetivo]): Proyecto
 
